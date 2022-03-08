@@ -1,0 +1,4 @@
+---
+# defaults file for admin-update
+WEBSITE_ENV: .env
+WEBSITE_APP: app.json

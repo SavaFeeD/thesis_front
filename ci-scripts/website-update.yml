@@ -1,0 +1,7 @@
+---
+- name: Update Admin Website
+  hosts: all
+  gather_facts: True
+
+  roles:
+    - role: admin-update

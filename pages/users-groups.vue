@@ -1,0 +1,479 @@
+<template>
+  <div class="list">
+    <div class="row">
+      <div class="col-12">
+        <div class="card list__content">
+          <div class="card-header">
+            <div class="card-title">
+              <h4>{{ $t("usersGroups.title") }}</h4>
+            </div>
+          </div>
+          <div class="col-12 d-flex justify-content-start flex-wrap">
+            <div class="row w-100 justify-content-between">
+              <!-- pagination perPage select -->
+              <div class="col-auto">
+                <el-select
+                  v-model="pagination.perPage"
+                  class="select-primary mb-3 pagination-select list__pagination-selector"
+                  placeholder="Per page"
+                >
+                  <el-option
+                    v-for="item in pagination.perPageOptions"
+                    :key="item"
+                    class="select-primary"
+                    :label="item"
+                    :value="item"
+                  />
+                </el-select>
+              </div>
+
+              <!-- search -->
+              <div class="col-auto">
+                <base-input>
+                  <el-input
+                    v-model="searchQuery"
+                    type="search"
+                    class="mb-3 search-input"
+                    prefix-icon="tim-icons icon-zoom-split"
+                    :placeholder="localization.inputs.search.placeholder"
+                    aria-controls="datatables"
+                  />
+                </base-input>
+              </div>
+            </div>
+            <!-- table -->
+            <div class="list__scroll">
+              <div class="list__table">
+                <el-table
+                  :data="queriedData"
+                  fit
+                  size="large"
+                >
+                  <el-table-column
+                    v-for="column in tableColumns"
+                    :key="column.label"
+                    :min-width="column.minWidth"
+                    :prop="column.prop"
+                    :label="column.label"
+                    :sortable="column.sortable"
+                    label-class-name="list__table-header"
+                  >
+                    <template #default="{row}">
+                      <div
+                        v-if="column.prop === 'discount'"
+                        class="align-items-center d-flex flex-row"
+                      >
+                        <span class="list__cell">
+                          {{ row[column.prop] }} {{ column.digit }}
+                        </span>
+                      </div>
+                      <div
+                        v-else-if="column.prop === 'coinomy'"
+                        class="align-items-center d-flex flex-row"
+                      >
+                        <input
+                          :id="`coinomy-box${row.id}`"
+                          type="checkbox"
+                          class="list__checkbox list__checkbox_input"
+                          :value="row"
+                        >
+                        <label :for="`coinomy-box${row.id}`">
+                          <div
+                            v-if="row.coinomy"
+                            class="list__checkbox list__checkbox_checked"
+                          >
+                            <img
+                              alt=""
+                              src="~/assets/img/icons/check-mark.svg"
+                            >
+                          </div>
+                          <div
+                            v-else
+                            class="list__checkbox"
+                          >
+                            <img
+                              alt=""
+                              src="~/assets/img/icons/dash.svg"
+                            >
+                          </div>
+                        </label>
+                      </div>
+                      <div
+                        v-else-if="column.prop === 'investor'"
+                        class="align-items-center d-flex flex-row"
+                      >
+                        <input
+                          :id="`investor-box${row.id}`"
+                          type="checkbox"
+                          class="list__checkbox list__checkbox_input"
+                          :value="row"
+                        >
+                        <label :for="`investor-box${row.id}`">
+                          <div
+                            v-if="row.investor"
+                            class="list__checkbox list__checkbox_checked"
+                          >
+                            <img
+                              alt=""
+                              src="~/assets/img/icons/check-mark.svg"
+                            >
+                          </div>
+                          <div
+                            v-else
+                            class="list__checkbox"
+                          >
+                            <img
+                              alt=""
+                              src="~/assets/img/icons/dash.svg"
+                            >
+                          </div>
+                        </label>
+                      </div>
+                      <div
+                        v-else
+                        class="align-items-center d-flex flex-row"
+                      >
+                        <span class="list__cell">
+                          {{ row[column.prop] }}
+                        </span>
+                      </div>
+                    </template>
+                  </el-table-column>
+                </el-table>
+              </div>
+            </div>
+            <!-- table footer -->
+            <div
+              slot="footer"
+              class="list__footer"
+            >
+              <!--            <div class="">-->
+              <!--              <p class="card-category">-->
+              <!--                Showing {{ from + 1 }} to {{ to }} of {{ total }} entries-->
+              <!--              </p>-->
+              <!--            </div>-->
+              <base-pagination
+                v-model="pagination.currentPage"
+                class="pagination-no-border"
+                :per-page="pagination.perPage"
+                :total="total"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+<script>
+import {
+  Option, Select, Table, TableColumn,
+} from 'element-ui';
+import { BasePagination } from '@/components';
+import { mapGetters } from 'vuex';
+import tablePaginationAndSearchMixin from '~/mixins/tablePaginationAndSearchMixin';
+
+export default {
+  name: 'StarterPage',
+
+  components: {
+    BasePagination,
+    [Select.name]: Select,
+    [Option.name]: Option,
+    [Table.name]: Table,
+    [TableColumn.name]: TableColumn,
+  },
+  mixins: [tablePaginationAndSearchMixin],
+  layout: 'default',
+
+  data() {
+    return {
+      propsToSearch: ['name'],
+      tableColumns: [
+        {
+          prop: 'number',
+          label: this.$t('usersGroups.columns.number.label'),
+          minWidth: 8,
+          sortable: true,
+        },
+        {
+          prop: 'name',
+          label: this.$t('usersGroups.columns.name.label'),
+          minWidth: 20,
+          sortable: true,
+        },
+        {
+          prop: 'discount',
+          label: this.$t('usersGroups.columns.discount.label'),
+          digit: this.$t('usersGroups.columns.discount.digit'),
+          minWidth: 15,
+          sortable: true,
+        },
+        {
+          prop: 'vip',
+          label: this.$t('usersGroups.columns.vip.label'),
+          minWidth: 15,
+          sortable: true,
+        },
+        {
+          prop: 'coinomy',
+          label: this.$t('usersGroups.columns.coinomy.label'),
+          minWidth: 12,
+          sortable: true,
+        },
+        {
+          prop: 'investor',
+          label: this.$t('usersGroups.columns.investor.label'),
+          minWidth: 12,
+          sortable: true,
+        },
+      ],
+
+      localization: {
+        inputs: {
+          search: {
+            placeholder: this.$t('usersGroups.search.placeholder'),
+          },
+        },
+      },
+    };
+  },
+  computed: {
+    ...mapGetters({
+      tableData: 'usersGroups/getGroupsList',
+    }),
+  },
+};
+</script>
+
+<style scoped lang="scss">
+.list {
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #fff;
+    border-radius: 50px;
+  }
+  ::-webkit-scrollbar-corner {
+    background: transparent;
+  }
+  @media screen and (max-width: 1199px) {
+    max-width: 100%;
+  }
+  max-width: calc(100vw - 160px);
+  width: calc(100vw - 160px);
+  float: right;
+  &__content {
+    background-color: #22262F;
+  }
+
+  &__table {
+    width: 100%;
+    @media screen and (max-width: 1199px) {
+      width: 1580px;
+    }
+  }
+
+  &__scroll {
+    width: 100%;
+    overflow: unset;
+    margin-bottom: 20px;
+    @media screen and (max-width: 1199px) {
+      overflow: scroll;
+    }
+  }
+  &__footer {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__table-header {
+    font-style: normal;
+    font-weight: bold;
+    font-size: 10px;
+    line-height: 12px;
+    color: #7C7C85;
+  }
+
+  &__checkbox {
+    background-color: #3C424F;
+    border-radius: 4px;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    &_checked {
+      background-color: #19CB60;
+    }
+    &_input {
+      display: none;
+    }
+  }
+  &__cell {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: flex-start;
+    text-align: center;
+    font-family: Montserrat;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px;
+    letter-spacing: 0;
+    color: #fff;
+    &_signed {
+      color: #868690;
+    }
+  }
+  &__button {
+    @media screen and (max-width: 1440px) {
+      font-size: 12px;
+      line-height: 8px;
+      font-weight: 400;
+      padding: 0 25px;
+    }
+    @media screen and (max-width: 1365px) {
+      font-size: 10px;
+      line-height: 8px;
+      font-weight: 400;
+      padding: 0 20px;
+    }
+    @media screen and (max-width: 1280px) {
+      font-size: 8px;
+      line-height: 8px;
+      font-weight: 400;
+      padding: 0 5px;
+    }
+    @media screen and (max-width: 1199px) {
+      font-size: 14px;
+      line-height: 17px;
+      font-weight: 700;
+      padding: 0 25px;
+    }
+
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    color: #5B9490;
+    border: 1px solid #5B9490;
+    font-family: Montserrat;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 17px;
+    letter-spacing: 0;
+    padding: 0 25px;
+    border-radius: 7px;
+    &:hover {
+      color: #fff;
+      background-color: #5B9490;
+    }
+  }
+}
+
+.kycStatus-green {
+  color: #96BFBC;
+}
+
+.kycStatus-red {
+  color: indianred;
+}
+
+.list__pagination-selector {
+  width: 95px;
+}
+
+.badges{
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  &__single {
+    height: 22px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    border-radius: 100px;
+    margin: 0 10px 10px 0;
+    padding: 0 8px;
+    border: 1px solid #81B2AE;
+    outline: none;
+    span {
+      font-family: Montserrat;
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 22px;
+      letter-spacing: 0;
+      color: #81B2AE;
+    }
+    &_active {
+      justify-content: space-between;
+      background-color: #81B2AE;
+      cursor: default;
+      span {
+        color: #fff;
+        margin-right: 7px;
+      }
+    }
+  }
+  &__icon {
+    height: 7px;
+    width: 7px;
+    color: #fff;
+    cursor: pointer;
+  }
+}
+
+.export {
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #5B9490;
+  border: 1px solid #5B9490;
+  font-family: Montserrat;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 17px;
+  letter-spacing: 0;
+  padding: 0 29px;
+  border-radius: 7px;
+  img {
+    width: 14px;
+    height: 20px;
+    margin-right: 10px;
+    fill: #fff;
+    stroke: #fff;
+  }
+  span {
+    color: #fff;
+    font-family: Montserrat;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 17px;
+    letter-spacing: 0;
+    text-align: center;
+  }
+  //&:hover {
+  //  background-color: transparent;
+  //  img {
+  //    fill: #5B9490;
+  //  }
+  //  span {
+  //    color: #5B9490;
+  //  }
+  //}
+}
+
+</style>

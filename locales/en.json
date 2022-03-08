@@ -1,0 +1,520 @@
+{
+  "userList": {
+    "title": "Users",
+    "buttons": {
+      "export": "Export",
+      "profile": "Go to profile"
+    },
+    "search": {
+      "placeholder": "Search"
+    },
+    "badges": {
+      "all": {
+        "label": "All users"
+      },
+      "notConfirm": {
+        "label": "Registered but didn't confirm email"
+      },
+      "discount": {
+        "label": "Users who have lifetime discount"
+      },
+      "noDeposit": {
+        "label": "Register only, no deposit"
+      },
+      "deposit": {
+        "label": "Deposit"
+      },
+      "notSuccessful": {
+        "label": "Deposit attempt, not successful"
+      },
+      "successful": {
+        "label": "Successful KYC"
+      },
+      "notFinished": {
+        "label": "Not finished KYC"
+      },
+      "wlApp": {
+        "label": "Whitelist application"
+      },
+      "whitelisted": {
+        "label": "Whitelisted"
+      },
+      "notWl": {
+        "label": "Not applied for whitelist"
+      },
+      "wlUSA": {
+        "label": "USA users applied for whitelist"
+      },
+      "wlUSAbyUs": {
+        "label": "USA whitelisted by us"
+      },
+      "registeredUSA": {
+        "label": "USA registered users, not cleared"
+      }
+    },
+    "columns": {
+      "number": {
+        "label": "#"
+      },
+      "id": {
+        "label": "ID"
+      },
+      "email": {
+        "label": "EMAIL"
+      },
+      "signedUp": {
+        "label": "REGISTRATED DATE"
+      },
+      "purchased": {
+        "label": "PURCHASED"
+      },
+      "whitelist": {
+        "label": "WHITELIST"
+      },
+      "affiliation": {
+        "label": "AFFILIATION"
+      },
+      "profile": {
+        "label": "PROFILE"
+      }
+    }
+  },
+  "admin": {
+    "title": "Users",
+    "buttons": {
+      "add": "Add new admin",
+      "change": "Change status"
+    },
+    "modals": {
+      "change": {
+        "title": "Changing status"
+      },
+      "add": {
+        "title": "Add new admin",
+        "description": "Enter new admin’s email to send the invitation to user"
+      }
+    },
+    "search": {
+      "placeholder": "Search"
+    },
+    "columns": {
+      "number": {
+        "label": "#"
+      },
+      "name": {
+        "label": "Name"
+      },
+      "email": {
+        "label": "Email"
+      },
+      "id": {
+        "label": "ID"
+      },
+      "permission": {
+        "label": "permission"
+      },
+      "password": {
+        "label": "Password"
+      },
+      "status": {
+        "label": "status",
+        "options": {
+          "postponed": "Postponed",
+          "deleted": "Deleted",
+          "active": "Active"
+        }
+      },
+      "change": {
+        "label": ""
+      }
+    }
+  },
+  "usersGroups": {
+    "title": "Users groups",
+    "search": {
+      "placeholder": "Search"
+    },
+    "columns": {
+      "number": {
+        "label": "#"
+      },
+      "name": {
+        "label": "Name"
+      },
+      "discount": {
+        "label": "Lifetime discount",
+        "digit": "%"
+      },
+      "vip": {
+        "label": "Vip Tier"
+      },
+      "coinomy": {
+        "label": "Coinomy"
+      },
+      "investor": {
+        "label": "Investor"
+      }
+    }
+  },
+  "userPage": {
+    "comment": {
+      "title": "Comment"
+    },
+    "buttons": {
+      "block": "Block",
+      "back": "Back",
+      "edit": "Edit",
+      "save": "Save",
+      "cancel": "Cancel"
+    },
+    "options": {
+      "status": {
+        "title": "Status"
+      },
+      "lastSeen": {
+        "title": "Last seen"
+      },
+      "signedUp": {
+        "title": "Signed up"
+      },
+      "email": {
+        "title": "Email"
+      },
+      "location": {
+        "title": "Location",
+        "not-indicated": "Not indicated"
+      }
+    },
+    "table": {
+      "title": "User transactions"
+    },
+    "data": "User data",
+    "location": "Location",
+    "group": "Group",
+    "tier": "VIP Tier",
+    "discount": "Life time discount",
+    "sunrise": "Sunrise",
+    "rest": "Juris rest",
+    "token": "Token allocation",
+    "purchase": "Purchase $"
+  },
+  "dashboard": {
+    "header": {
+      "title": "Tranche"
+    },
+    "statsCards": {
+      "totalCHNSupplyLef": {
+        "title": "Total CHN Supply Lef"
+      },
+      "totalCHNSupplySold": {
+        "title": "Total CHN Supply Sold"
+      },
+      "totalRaised": {
+        "title": "Total raised"
+      },
+      "numberOfParticipants": {
+        "title": "Number of participants"
+      },
+      "averagePurchase": {
+        "title": "Average purchase"
+      },
+      "currentPrice": {
+        "title": "Current Price"
+      },
+      "updateAt": "Update at"
+    },
+    "CHNPurchased": "CHN Purchased",
+    "trancheProgress": "Tranche progress",
+    "totalCHNSold": "Total CHN sold",
+    "totalSold": "Total sold",
+    "transactions": "Transactions",
+    "ui": {
+      "btnExportFullData": "Export full data",
+      "btnExport": "Export",
+      "addTransaction": "Add transaction"
+    }
+  },
+  "settings": {
+    "ui": {
+      "btn": {
+        "save": "Save",
+        "reset": "Reset"
+      }
+    },
+    "tokenInfo": {
+      "title": "Token info",
+      "fields": {
+        "tokenName": {
+          "placeholder": "Chains",
+          "label": "Token name"
+        },
+        "tokenSymbol": {
+          "placeholder": "CHN",
+          "label": "Token symbol"
+        },
+        "totalToken": {
+          "label": "Total Tokens under management (CHN)"
+        },
+        "tokenDecimal": {
+          "label": "Token decimal"
+        }
+      }
+    },
+    "trancheInfo": {
+      "title": "Tranche info",
+      "fields": {
+        "trancheAmount": {
+          "label": "Tranche amount (CHN)"
+        },
+        "tranches": {
+          "label": "Tranches"
+        },
+        "trancheStartDate": {
+          "label": "Start date"
+        },
+        "trancheEndDate": {
+          "label": "End date"
+        }
+      }
+    },
+    "investmentInfo": {
+      "title": "Investment info",
+      "fields": {
+        "minimumInvestment": {
+          "label": "Minimum investment (USD)"
+        },
+        "maximumInvestment": {
+          "label": "Maximum investment (USD)"
+        },
+        "startPrice": {
+          "label": "Start price (USD)"
+        },
+        "endPrice": {
+          "label": "End price (USD)"
+        }
+      }
+    },
+    "acceptedCurrencies": {
+      "title": "Accepted currencies",
+      "fields": {
+        "newCurrency": {
+          "label": "Add new currency"
+        }
+      }
+    },
+    "paymentGateways": {
+      "title": "Payment gateways",
+      "fields": {
+        "newGateways": {
+          "label": "Add new gateways"
+        }
+      }
+    },
+    "icoInfo": {
+      "title": "ICO info",
+      "fields": {
+        "hardCap": {
+          "label": "Hard-cap (USD)"
+        }
+      }
+    },
+    "priceFormulaPolicy": {
+      "title": "ICO info",
+      "fields": {
+        "priceFormula": {
+          "label": "Price formula"
+        }
+      }
+    }
+  },
+  "vesting": {
+    "title": "Vesting",
+    "buttons": {
+      "edit": "Edit",
+      "add": "Add new vesting"
+    },
+    "modals": {
+      "edit": {
+        "title": "Edit vesting"
+      },
+      "add": {
+        "title": "Add vesting"
+      }
+    },
+    "search": {
+      "placeholder": "Search"
+    },
+    "columns": {
+      "number": {
+        "label": "#"
+      },
+      "start": {
+        "label": "Start Date"
+      },
+      "intervals": {
+        "label": "Intervals",
+        "digit": "years"
+      },
+      "percentage": {
+        "label": "Percentage per interval",
+        "digit": "%"
+      },
+      "edit": {
+        "label": ""
+      }
+    }
+  },
+  "modals": {
+    "vesting": {
+      "buttons": {
+        "cancel": "Cancel",
+        "save": "Save",
+        "add": "Add"
+      },
+      "addVesting": {
+        "title": "Add vesting"
+      },
+      "editVesting": {
+        "title": "Edit vesting"
+      },
+      "inputs": {
+        "start": {
+          "label": "Start date",
+          "placeholder": "Choose start date",
+          "name": "date"
+        },
+        "interval": {
+          "label": "Interval (years)",
+          "placeholder": "Enter interval",
+          "name": "interval"
+        },
+        "percentage": {
+          "label": "Percentage per interval",
+          "placeholder": "Enter percentage",
+          "name": "percentage"
+        }
+      }
+    },
+    "admin": {
+      "buttons": {
+        "cancel": "Cancel",
+        "save": "Save",
+        "add": "Add"
+      },
+      "addAdmin": {
+        "title": "Add new admin",
+        "description": "Enter new admin’s email to send the invitation to user"
+      },
+      "changeStatus": {
+        "title": "Changing status"
+      },
+      "inputs": {
+        "email": {
+          "label": "E-mail",
+          "placeholder": "admin@gmail.com",
+          "name": "email"
+        },
+        "lvl": {
+          "label": "Admin level",
+          "placeholder": "Choose admin level",
+          "name": "admin level",
+          "super": "Super admin",
+          "analyst": "Analyst admin"
+        },
+        "login": "Log In"
+      },
+      "radios": {
+        "active": {
+          "label": "Active",
+          "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+          "name": "status"
+        },
+        "postponed": {
+          "label": "Postponed",
+          "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+          "name": "status"
+        },
+        "deleted": {
+          "label": "Deleted",
+          "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+          "name": "status"
+        }
+      }
+    }
+  },
+  "sidebar": {
+    "dashboard": "Dashboard",
+    "users": "Users",
+    "admin": "Admins",
+    "reports": "Reports",
+    "vesting": "Vesting",
+    "groups": "Users groups",
+    "settings": "Settings",
+    "title": "Chains",
+    "shortTitle": "CT",
+    "pages": "Pages",
+    "pricing": "Pricing",
+    "rtl": "RTL Support",
+    "timeline": "Timeline",
+    "login": "Login",
+    "register": "Register",
+    "lock": "Lock Screen",
+    "userProfile": "User Profile",
+    "components": "Components",
+    "multiLevelCollapse": "Multilevel Collapse",
+    "example": "Example Page",
+    "buttons": "Buttons",
+    "gridSystem": "Grid System",
+    "panels": "Panels",
+    "sweetAlert": "Sweet Alert",
+    "icons": "Icons",
+    "notifications": "Notifications",
+    "typography": "Typography",
+    "forms": "Forms",
+    "regularForms": "Regular Forms",
+    "extendedForms": "Extended Forms",
+    "validationForms": "Validation Forms",
+    "wizard": "Wizard",
+    "tables": "Tables",
+    "regularTables": "Regular Tables",
+    "extendedTables": "Extended Tables",
+    "paginatedTables": "Paginated Tables",
+    "maps": "Maps",
+    "googleMaps": "Google Maps",
+    "fullScreenMaps": "Full Screen Map",
+    "vectorMaps": "Vector Maps",
+    "widgets": "Widgets",
+    "charts": "Charts",
+    "calendar": "Calendar",
+    "statistic": "Chn statistic"
+  },
+  "messages": {
+    "alpha": "The {_field_} field may only contain alphabetic characters",
+    "alpha_num": "The {_field_} field may only contain alpha-numeric characters",
+    "alpha_dash": "The {_field_} field may contain alpha-numeric characters as well as dashes and underscores",
+    "alpha_spaces": "The {_field_} field may only contain alphabetic characters as well as spaces",
+    "between": "The {_field_} field must be between {min} and {max}",
+    "confirmed": "The {_field_} field confirmation does not match",
+    "customDate": "The {_field_} field must conform to dd.mm.yyyy format ",
+    "digits": "The {_field_} field must be numeric and exactly contain {length} digits",
+    "dimensions": "The {_field_} field must be {width} pixels by {height} pixels",
+    "email": "The {_field_} field must be a valid email",
+    "excluded": "The {_field_} field is not a valid value",
+    "ext": "The {_field_} field is not a valid file",
+    "image": "The {_field_} field must be an image",
+    "integer": "The {_field_} field must be an integer",
+    "length": "The {_field_} field must be {length} long",
+    "max_value": "The {_field_} field must be {max} or less",
+    "max": "The {_field_} field may not be greater than {length} characters",
+    "mimes": "The {_field_} field must have a valid file type",
+    "min_value": "The {_field_} field must be {min} or more",
+    "min": "The {_field_} field must be at least {length} characters",
+    "numeric": "The {_field_} field may only contain numeric characters",
+    "oneOf": "The {_field_} field is not a valid value",
+    "regex": "The {_field_} field format is invalid",
+    "required_if": "The {_field_} field is required",
+    "required": "The {_field_} is required",
+    "size": "The {_field_} field size must be less than {size}KB",
+    "decimal": "The {_field_} field must contain only decimal values"
+  }
+}

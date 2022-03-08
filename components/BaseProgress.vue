@@ -1,0 +1,98 @@
+<template>
+  <div
+    class="progress-container"
+    :class="{
+      [`progress-${type}`]: type,
+      [`progress-${size}`]: size
+    }"
+  >
+    <span
+      v-if="label"
+      class="progress-badge"
+    >{{ label }}</span>
+    <div class="progress">
+      <span
+        v-if="showValue && valuePosition === 'left'"
+        class="progress-value"
+      >
+        {{ value }}%</span>
+      <div
+        class="progress-bar"
+        :class="computedClasses"
+        role="progressbar"
+        :aria-valuenow="value"
+        aria-valuemin="0"
+        aria-valuemax="100"
+        :style="`width: ${value}%;`"
+      >
+        <slot>
+          <span
+            v-if="showValue && valuePosition === 'right'"
+            class="progress-value"
+          >{{ value }}%</span>
+        </slot>
+      </div>
+    </div>
+  </div>
+</template>
+<script>
+export default {
+  name: 'BaseProgress',
+  props: {
+    striped: Boolean,
+    showValue: {
+      type: Boolean,
+      default: true,
+    },
+    animated: Boolean,
+    label: {
+      type: String,
+      default: '',
+    },
+    valuePosition: {
+      type: String,
+      default: 'left', // left | right
+    },
+    height: {
+      type: Number,
+      default: 1,
+    },
+    type: {
+      type: String,
+      default: 'default',
+    },
+    size: {
+      type: String,
+      default: 'sm',
+    },
+    value: {
+      type: Number,
+      default: 0,
+      validator: (value) => value >= 0 && value <= 100,
+    },
+  },
+  computed: {
+    computedClasses() {
+      return [
+        { 'progress-bar-striped': this.striped },
+        { 'progress-bar-animated': this.animated },
+      ];
+    },
+  },
+};
+</script>
+<style>
+.progress {
+  height: 5px;
+  border: none!important;
+}
+.progress-bar {
+  background: #6CA5A1!important;
+}
+.progress-value {
+  top: -35px!important;
+  font-size: 16px!important;
+  line-height: 20px!important;
+  color: #9DD3DF!important;
+}
+</style>
