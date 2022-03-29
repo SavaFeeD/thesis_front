@@ -8,7 +8,7 @@ export default {
   ** Headers of the page
   */
   head: {
-    title: 'Chains admin',
+    title: 'TTIT Analytics',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },

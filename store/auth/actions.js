@@ -1,6 +1,6 @@
 export default {
   async login({ dispatch }, payload) {
-    const resp = await this.$axios.$post('/admin/login', payload);
+    const resp = await this.$axios.$post('/auth/login', payload);
     await dispatch('setNewTokens', resp.result);
   },
   logOut() {
@@ -18,6 +18,6 @@ export default {
     await dispatch('setNewTokens', resp);
   },
   async invite(_, payload) {
-    await this.$axios.$post('/admin/new/email', payload);
+    await this.$axios.$post('/auth/new/email', payload);
   },
 };
